@@ -190,7 +190,11 @@ input:focus {
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  width: 36rem;
+  width: 40rem;
+}
+
+.thank-you h1 {
+  margin-bottom: 1.8rem;
 }
 
 .thank-you {
@@ -200,7 +204,7 @@ input:focus {
 
 .thank-you p {
   color: var(--Dark-grayish-violet);
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 
 .thank-you button {

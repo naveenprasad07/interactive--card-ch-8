@@ -11,9 +11,10 @@ const cardCvc = document.getElementById("cvc");
 const submitBtn = document.getElementById("submit-btn");
 const form = document.querySelector("form");
 const done = document.querySelector(".thank-you");
+const continueBtn = document.querySelector(".thank-you button");
 
 function setCardNumber(e) {
-  cardNumber.innerText = format(e.target.value);
+  cardNumber.innerText = format(e.target.value.replaceAll("-", " "));
 }
 function setCardName(e) {
   cardName.innerText = format(e.target.value);
@@ -32,6 +33,18 @@ function format(s) {
   return s.toString().replace(/\d(4)(?=.)/g, "$&");
 }
 
+inputNumber.addEventListener("input", function (e) {
+  let value = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+  if (value.length > 16) {
+    value = value.slice(0, 16); // Limit the length to 16 digits
+  }
+
+  // Format the value into groups of 4 digits separated by dashes
+  let formattedValue = value.match(/.{1,4}/g)?.join("-") || "";
+
+  e.target.value = formattedValue;
+});
+
 inputNumber.addEventListener("keyup", setCardNumber);
 inputMonth.addEventListener("keyup", setCardMonth);
 inputYear.addEventListener("keyup", setCardYear);
@@ -40,7 +53,7 @@ inputName.addEventListener("keyup", setCardName);
 
 function handleSubmit(e) {
   e.preventDefault();
-  console.log("Iam there");
+
   if (!inputName.value) {
     inputName.classList.add("error");
     inputName.parentElement.classList.add("error-message");
@@ -95,3 +108,14 @@ function handleSubmit(e) {
 }
 
 window.addEventListener("submit", handleSubmit);
+
+continueBtn.addEventListener("click", function () {
+  inputName.textContent =
+    inputNumber.textContent =
+    inputMonth.textContent =
+    inputYear.textContent =
+    inputCvc.textContent =
+      "";
+  done.classList.add("hidden");
+  form.classList.remove("hidden");
+});

@@ -44,6 +44,7 @@
                 <span id="name">Jane Appleseed</span>
                 <span id="date">
                   <span id="month">00</span>
+                  <span id="slash">/</span>
                   <span id="year">00</span>
                 </span>
               </div>
@@ -74,11 +75,11 @@
           <div class="block-2">
             <label for="input-number">Card Number</label>
             <input
-              type="number"
+              type="text"
               placeholder="e.g. 1234 5678 9123 0000"
               name="input-number"
               id="input-number"
-              maxlength="16"
+              maxlength="19"
               required
             />
           </div>
@@ -89,7 +90,7 @@
                 <div>
                   <input
                     name="input-month"
-                    type="number"
+                    type="tel"
                     placeholder="MM"
                     minlength="2"
                     maxlength="2"
@@ -100,7 +101,7 @@
                 <div>
                   <input
                     name="input-year"
-                    type="number"
+                    type="tel"
                     id="input-year"
                     minlength="2"
                     maxlength="2"
@@ -113,7 +114,7 @@
               <label for="input-cvc">CVC</label>
               <input
                 name="input-cvc"
-                type="number"
+                type="text"
                 id="input-cvc"
                 placeholder="e.g.123"
                 maxlength="3"
